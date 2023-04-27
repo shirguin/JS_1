@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seminar_10</title>
+  </head>
+  <body>
+    <div class="content"></div>
+
+    <script src="data.js"></script>
+    <script>
+      const data = JSON.parse(dataInfo);
+      console.log(data);
+      data.forEach((element) => {
+        console.log(`API - ${element.API}`);
+      });
+
+      /*       fetch("https://api.publicapis.org/entries")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+        }); */
+    </script>
+  </body>
+</html>
