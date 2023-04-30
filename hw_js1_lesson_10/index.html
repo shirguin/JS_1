@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson_10</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="content"></div>
+
+    <script src="data.js"></script>
+    <script>
+      const data = JSON.parse(dataInfo);
+      const contentEl = document.querySelector(".content");
+
+      data.forEach((element) => {
+        const itemEl = `
+          <div class="item">
+            <img src="${element.photo}" alt="photo"/>
+            <h3 class="item__title">${element.name}</h3>
+            <p class="item__text">Компания "${element.company.name}"</p>
+            <p class="item__text">Почта "${element.email}"</p>
+            <p class="item__text">Сайт "${element.website}"</p>
+            <p class="item__text">Телефон "${element.phone}"</p>
+          </div>`;
+
+        contentEl.insertAdjacentHTML("beforeend", itemEl);
+      });
+    </script>
+  </body>
+</html>
