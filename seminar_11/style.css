@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-left: 230px;
+    margin-top: 319px;
+    margin-bottom: 777px;
+}
+
+.product {
+    display: flex;
+    gap: 31px;
+    width: 652px;
+    height: 306px;
+    box-shadow: 17px 19px 24px rgba(0, 0, 0, 0.13);
+}
+
+.product__image {
+    width: 262px;
+    height: 306px;
+}
+
+.product__info {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+}
+
+.product__info a {
+    text-decoration: none;
+    width: 200px;
+}
+
+.product__info__title {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #222222;
+    padding-top: 22px;
+}
+
+.product__info__price {
+    display: flex;
+    gap: 5px;
+    margin-top: 42px;
+}
+
+.product__info__property {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+    color: #575757;
+}
+
+.product__info__price__value {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+    color: #EF5B70;
+
+}
+
+.product__info__color {
+    display: flex;
+    gap: 5px;
+    margin-top: 6px;
+}
+
+.product__info__color__value {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+    color: #575757;
+}
+
+.product__info__size {
+    display: flex;
+    gap: 5px;
+    margin-top: 6px;
+}
+
+.product__info__size__value {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+    color: #575757;
+}
+
+.product__info__quantity {
+    display: flex;
+    gap: 5px;
+    margin-top: 6px;
+}
+
+.product__info__quantity__value {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+    color: #575757;
+    width: 43px;
+    text-align: center;
+    border: 1px solid #EAEAEA;
+}
+
+.product__delete {
+    width: 128px;
+}
+
+.product__delete_svg {
+    padding-top: 28px;
+    padding-left: 88px;
+    width: 18px;
+    height: 18px;
+}
