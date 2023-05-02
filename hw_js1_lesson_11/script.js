@@ -76,5 +76,5 @@ data.forEach((element) => {
   contentBlockEl.append(priceEl);
 
   //Вставляем в HTML собранный блок (content_block)
-  contentBlocksEl.insertAdjacentElement('afterBegin',contentBlockEl);
+  contentBlocksEl.append(contentBlockEl);
 });
