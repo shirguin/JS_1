@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson_12</title>
+  </head>
+  <body>
+    <div>
+      <audio
+        class="audioPlayer"
+        src="ANNA_ASTI_-_Po_baram_74376135.mp3"
+      ></audio>
+    </div>
+    <div>
+      <button class="audioOn">Включить музыку</button>
+      <button class="audioOff">Выключить музыку</button>
+    </div>
+
+    <div>
+      <video class="videoPlayer" src="Video_1.mp4"></video>
+    </div>
+    <div>
+        <button class="videoOn">Запустить</button>
+        <button class="videoOff">Остановить</button>
+    </div>
+
+    <script>
+      //Audio
+      const audioPlayerEl = document.querySelector(".audioPlayer");
+      const audioOnEl = document.querySelector(".audioOn");
+      const audioOff = document.querySelector(".audioOff");
+
+      audioOnEl.addEventListener("click", () => {
+        audioPlayerEl.play();
+      });
+
+      audioOff.addEventListener("click", () => {
+        audioPlayerEl.pause();
+      });
+
+      //Video
+      const videoPlayerEl = document.querySelector('.videoPlayer');
+      const videoOnEl = document.querySelector('.videoOn');
+      const videoOffEl = document.querySelector('.videoOff');
+
+      videoOnEl.addEventListener('click', ()=> {
+        videoPlayerEl.play();
+      });
+
+      videoOffEl.addEventListener('click', ()=> {
+        videoPlayerEl.pause();
+      });
+    </script>
+  </body>
+</html>
