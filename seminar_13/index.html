@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Player</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="video_player">
+        <video class="video" src="https://media.istockphoto.com/id/1295217100/ru/видео/танцы-в-небе.mp4?s=mp4-640x640-is&k=20&c=r8Q13AfmYWrM6AYcIt-FRn-uyzgJC358XpgaC88FPpk="></video>
+        <div class="player_control">
+          <button class="play">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 10.82V21.18C12 21.97 12.87 22.45 13.54 22.02L21.68 16.84C22.3 16.45 22.3 15.55 21.68 15.15L13.54 9.98001C12.87 9.55001 12 10.03 12 10.82Z"
+                fill="black"
+              />
+            </svg>
+          </button>
+          <button class="pause">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 23C13.1 23 14 22.1 14 21V11C14 9.9 13.1 9 12 9C10.9 9 10 9.9 10 11V21C10 22.1 10.9 23 12 23ZM18 11V21C18 22.1 18.9 23 20 23C21.1 23 22 22.1 22 21V11C22 9.9 21.1 9 20 9C18.9 9 18 9.9 18 11Z"
+                fill="black"
+              />
+            </svg>
+          </button>
+
+          <span class="current_time">0:0</span>
+          <span class="separator">/</span>
+          <span class="duration"></span>
+
+          <input class="range" type="range">
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const videoEl = document.querySelector(".video");
+      const btnPlayEl = document.querySelector(".play");
+      const btnPauseEl = document.querySelector(".pause");
+      const durationEl = document.querySelector(".duration");
+      const current_timeEl = document.querySelector(".current_time");
+
+      videoEl.addEventListener("loadedmetadata", () => {
+        let duration = Math.round(videoEl.duration);
+        let durationSeconds = duration % 60;
+        let durationMinutes = (duration - durationSeconds) / 60;
+        durationEl.textContent = `${durationMinutes}:${durationSeconds}`;
+      });
+
+      videoEl.addEventListener("timeupdate", () => {
+        let currentTime = Math.round(videoEl.currentTime);
+        let currentTimeSeconds = currentTime % 60;
+        let currentTimeMinutes = (currentTime - currentTimeSeconds) / 60;
+
+        current_timeEl.textContent = `${currentTimeMinutes}:${currentTimeSeconds}`;
+      });
+
+      btnPlayEl.addEventListener("click", () => {
+        videoEl.play();
+      });
+
+      btnPauseEl.addEventListener("click", () => {
+        videoEl.pause();
+      });
+    </script>
+  </body>
+</html>
