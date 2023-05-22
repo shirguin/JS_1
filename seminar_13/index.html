@@ -10,7 +10,10 @@
   <body>
     <div class="wrapper">
       <div class="video_player">
-        <video class="video" src="https://media.istockphoto.com/id/1295217100/ru/видео/танцы-в-небе.mp4?s=mp4-640x640-is&k=20&c=r8Q13AfmYWrM6AYcIt-FRn-uyzgJC358XpgaC88FPpk="></video>
+        <video
+          class="video"
+          src="https://media.istockphoto.com/id/1295217100/ru/видео/танцы-в-небе.mp4?s=mp4-640x640-is&k=20&c=r8Q13AfmYWrM6AYcIt-FRn-uyzgJC358XpgaC88FPpk="
+        ></video>
         <div class="player_control">
           <button class="play">
             <svg
@@ -45,7 +48,7 @@
           <span class="separator">/</span>
           <span class="duration"></span>
 
-          <input class="range" type="range">
+          <input class="range" type="range" />
         </div>
       </div>
     </div>
@@ -56,6 +59,10 @@
       const btnPauseEl = document.querySelector(".pause");
       const durationEl = document.querySelector(".duration");
       const current_timeEl = document.querySelector(".current_time");
+
+      const rangeEl = document.querySelector(".range");
+      rangeEl.min = 0;
+      rangeEl.value = Math.round(videoEl.currentTime);
 
       videoEl.addEventListener("loadedmetadata", () => {
         let duration = Math.round(videoEl.duration);
@@ -70,6 +77,9 @@
         let currentTimeMinutes = (currentTime - currentTimeSeconds) / 60;
 
         current_timeEl.textContent = `${currentTimeMinutes}:${currentTimeSeconds}`;
+
+        rangeEl.max = Math.round(videoEl.duration);
+        rangeEl.value = currentTime;
       });
 
       btnPlayEl.addEventListener("click", () => {
