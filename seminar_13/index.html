@@ -12,10 +12,10 @@
       <div class="video_player">
         <video
           class="video"
-          src="https://media.istockphoto.com/id/1295217100/ru/видео/танцы-в-небе.mp4?s=mp4-640x640-is&k=20&c=r8Q13AfmYWrM6AYcIt-FRn-uyzgJC358XpgaC88FPpk="
+          src="https://cv1.pikabu.ru/video/2021/01/16/1610793495220580248_720x404.mp4"
         ></video>
         <div class="player_control">
-          <button class="play">
+          <div class="play">
             <svg
               width="32"
               height="32"
@@ -25,11 +25,11 @@
             >
               <path
                 d="M12 10.82V21.18C12 21.97 12.87 22.45 13.54 22.02L21.68 16.84C22.3 16.45 22.3 15.55 21.68 15.15L13.54 9.98001C12.87 9.55001 12 10.03 12 10.82Z"
-                fill="black"
+                fill="white"
               />
             </svg>
-          </button>
-          <button class="pause">
+          </div>
+          <div class="pause">
             <svg
               width="32"
               height="32"
@@ -39,16 +39,40 @@
             >
               <path
                 d="M12 23C13.1 23 14 22.1 14 21V11C14 9.9 13.1 9 12 9C10.9 9 10 9.9 10 11V21C10 22.1 10.9 23 12 23ZM18 11V21C18 22.1 18.9 23 20 23C21.1 23 22 22.1 22 21V11C22 9.9 21.1 9 20 9C18.9 9 18 9.9 18 11Z"
-                fill="black"
+                fill="white"
               />
             </svg>
-          </button>
+          </div>
 
           <span class="current_time">0:0</span>
           <span class="separator">/</span>
           <span class="duration"></span>
 
           <input class="range" type="range" />
+
+          <div class="sound_on">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19.35 24.3C19.0167 24.4334 18.7083 24.3917 18.425 24.175C18.1417 23.9584 18 23.6584 18 23.275C18 23.0917 18.0542 22.9292 18.1625 22.7875C18.2708 22.6459 18.4083 22.5417 18.575 22.475C19.9083 21.9417 20.9792 21.0917 21.7875 19.925C22.5958 18.7584 23 17.4417 23 15.975C23 14.5084 22.5958 13.1917 21.7875 12.025C20.9792 10.8584 19.9083 10.0084 18.575 9.47504C18.3917 9.40838 18.25 9.30004 18.15 9.15004C18.05 9.00004 18 8.83338 18 8.65004C18 8.28338 18.1417 7.99171 18.425 7.77504C18.7083 7.55838 19.0167 7.51671 19.35 7.65004C21.05 8.33338 22.4167 9.42504 23.45 10.925C24.4833 12.425 25 14.1084 25 15.975C25 17.8417 24.4833 19.525 23.45 21.025C22.4167 22.525 21.05 23.6167 19.35 24.3ZM8 19C7.71667 19 7.47917 18.9042 7.2875 18.7125C7.09583 18.5209 7 18.2834 7 18V14C7 13.7167 7.09583 13.4792 7.2875 13.2875C7.47917 13.0959 7.71667 13 8 13H11L14.3 9.70004C14.6167 9.38338 14.9792 9.31254 15.3875 9.48754C15.7958 9.66254 16 9.97504 16 10.425V21.575C16 22.025 15.7958 22.3375 15.3875 22.5125C14.9792 22.6875 14.6167 22.6167 14.3 22.3L11 19H8ZM18 20V11.95C18.75 12.3 19.3542 12.8417 19.8125 13.575C20.2708 14.3084 20.5 15.1167 20.5 16C20.5 16.8834 20.2708 17.6834 19.8125 18.4C19.3542 19.1167 18.75 19.65 18 20Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+
+          <input
+            class="sound_range"
+            type="range"
+            step="0.1"
+            min="0"
+            max="1"
+            value="0.2"
+          />
         </div>
       </div>
     </div>
@@ -63,6 +87,11 @@
       const rangeEl = document.querySelector(".range");
       rangeEl.min = 0;
       rangeEl.value = Math.round(videoEl.currentTime);
+
+      const btnSoundOnEl = document.querySelector(".sound_on");
+      const btnSoundOfEl = document.querySelector(".sound_of");
+
+      const soundRangeEl = document.querySelector(".sound_range");
 
       videoEl.addEventListener("loadedmetadata", () => {
         let duration = Math.round(videoEl.duration);
@@ -88,6 +117,10 @@
 
       btnPauseEl.addEventListener("click", () => {
         videoEl.pause();
+      });
+
+      soundRangeEl.addEventListener("input", () => {
+        videoEl.volume = soundRangeEl.value;
       });
     </script>
   </body>

@@ -30,7 +30,7 @@
 }
 
 .play {
-  margin-left: 40px;
+  margin-left: 90px;
   margin-right: 5px;
 }
 
@@ -58,4 +58,9 @@
 .range {
   color: white;
   margin-left: 40px;
+}
+
+.sound_on {
+  margin-left: 80px;
+  margin-right: 10px;
 }
