@@ -84,42 +84,43 @@ data.forEach((element) => {
   contentBlocksEl.append(contentBlockEl);
 });
 
+const cartItemsEl = document.querySelector(".cart_items");
+
+if (cart.length == 0) {
+  cartItemsEl.style.display = "none";
+}
+
 //Добавление товаров в корзину
 const btnAddToCartEls = document.querySelectorAll(".add_to_cart_svg");
 
-btnAddToCartEls.forEach((element) => {
-  element.addEventListener("click", (e) => {
-    const idProduct =
-      +e.target.parentNode.parentNode.getAttribute("data-id-product");
+function displayCart() {
+  const cartItemsProductsEl = document.querySelector(".cart_items_products");
 
-    data.forEach((element) => {
-      if (element.id == idProduct) {
-        cart.push(element);
-      }
-    });
-  });
-});
+  //очистка корзины
+  cartItemsProductsEl.remove();
 
-// Вывод товаров на странице корзины
-const cartLeftBlockEl = document.querySelector(".cart__left_block");
-cart.forEach((element) => {
-  const product = `<div class="cart__product">
+  //отрисовка содержимого корзины
+  const newCartItemsProductsEl = document.createElement("div");
+  newCartItemsProductsEl.classList.add("cart_items_products");
+  cartItemsEl.append(newCartItemsProductsEl);
+
+  cart.forEach((element) => {
+    const product = `<div class="cart__product cart_item" data-id-product=${element.id}>
   <img
     class="cart_product__img"
-    src="img/photo21.png"
-    alt="photo21"
+    src=${element.img}
+    alt="photo"
   />
   <div class="cart__product__info">
     <div class="cart__product__info__heading">
       <a href="product.html">
         <h2 class="cart__product__info__heading__text">
-          MANGO PEOPLE
+        ${element.name}
         </h2>
-        <h2 class="cart__product__info__heading__text">T-SHIRT</h2>
       </a>
     </div>
     <p class="cart__product__info__data">
-      Price:<span class="cart__product__info__data__price">$300</span>
+      Price:<span class="cart__product__info__data__price">${element.price}</span>
     </p>
     <p class="cart__product__info__data">Color:Red</p>
     <p class="cart__product__info__data">Size:XI</p>
@@ -128,11 +129,11 @@ cart.forEach((element) => {
       <input
         class="cart__product__info__data__quantity"
         type="number"
-        value="2"
+        value="1"
       />
     </div>
   </div>
-  <a href="#">
+  <div class="deleteProduct">
     <svg
       class="cart__product__delete"
       width="18"
@@ -146,8 +147,53 @@ cart.forEach((element) => {
         fill="#575757"
       />
     </svg>
-  </a>
+  </div>
 </div>`;
 
-  cartLeftBlockEl.insertAdjacentHTML("beforeend", product);
+    newCartItemsProductsEl.insertAdjacentHTML("beforeend", product);
+  });
+}
+
+btnAddToCartEls.forEach((element) => {
+  element.addEventListener("click", (e) => {
+    const idProduct =
+      +e.target.parentNode.parentNode.getAttribute("data-id-product");
+
+    data.forEach((element) => {
+      if (element.id == idProduct) {
+        cart.push(element);
+        cartItemsEl.style.display = "";
+      }
+    });
+    //отрисовка содержимого корзины
+    displayCart();
+
+    //навешиваем обработчик на кнопку DELETE
+    const btnDeleteProductEls = document.querySelectorAll(".cart__product__delete");
+
+    btnDeleteProductEls.forEach((element) => {
+      element.addEventListener("click", (e) => {   
+        const idProduct =
+          +e.target.parentNode.parentNode.getAttribute("data-id-product");
+    
+        cart.forEach((element) =>{
+          if (element.id == idProduct){
+            let index = cart.indexOf(element, 0);
+            delete cart[index];
+            if (cart.length == 0){
+              cartItemsEl.style.display = "none";
+            }
+          }
+          displayCart();
+        });
+
+      });
+    });
+    displayCart();
+  });
 });
+
+//Удаление товаров из корзины
+
+
+

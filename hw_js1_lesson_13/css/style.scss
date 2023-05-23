@@ -1952,3 +1952,37 @@ a {
     }
 
 }
+
+.cart_items {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background: #E5E5E5;
+    padding-bottom: 96px;
+}
+
+.cart_item {
+    margin-left: 240px;
+}
+
+.cart_items_heading {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 36px;
+    color: #222222;
+    padding-left: 687px;
+    padding-top: 96px;
+    padding-bottom: 24px;
+}
+
+.cart_items_products {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.cart__product__delete {
+    padding-right: 20px;
+}
