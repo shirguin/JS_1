@@ -169,31 +169,34 @@ btnAddToCartEls.forEach((element) => {
     displayCart();
 
     //навешиваем обработчик на кнопку DELETE
-    const btnDeleteProductEls = document.querySelectorAll(".cart__product__delete");
+    const btnDeleteProductEls = document.querySelectorAll(
+      ".cart__product__delete"
+    );
+
+    //console.log("Список товаров, которые можно удалить"); //--------
+    //console.log(btnDeleteProductEls); //--------
 
     btnDeleteProductEls.forEach((element) => {
-      element.addEventListener("click", (e) => {   
-        const idProduct =
-          +e.target.parentNode.parentNode.getAttribute("data-id-product");
-    
-        cart.forEach((element) =>{
-          if (element.id == idProduct){
+      element.addEventListener("click", (e) => {
+        //debugger;
+        const idProductDelete =
+          +e.target.parentNode.parentNode.parentNode.getAttribute(
+            "data-id-product"
+          );
+
+        //console.log(`id deleteEl = ${idProductDelete}`);//------
+
+        cart.forEach((element) => {
+          if (element.id == idProductDelete) {
             let index = cart.indexOf(element, 0);
             delete cart[index];
-            if (cart.length == 0){
+            if (cart.length == 0) {
               cartItemsEl.style.display = "none";
             }
+            displayCart();
           }
-          displayCart();
         });
-
       });
     });
-    displayCart();
   });
 });
-
-//Удаление товаров из корзины
-
-
-
